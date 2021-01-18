@@ -1,0 +1,47 @@
+<div class="labels-container">
+
+    <h3 class="labels-header">Add labels</h3>
+
+    <input type="text" [formControl]="labelName" placeholder="Label name" class="basic-input-text label-input" id="input-label-name">
+
+    <div class="colors-panel">
+
+        <div 
+        class="color-cell"
+        *ngFor="let color of colors" 
+        (click)="setLabelColor(color)"
+        [ngStyle]="{ 'background-color': color}"
+        > </div>
+
+    </div>
+
+    <div class="color-input-container">
+        <div class="color-preview" [ngStyle]="{ 'background-color': labelColor.value }" ></div>
+
+        <input type="text" [formControl]="labelColor" class="basic-input-text label-input" id="input-label-color">
+    </div>
+
+    <div class="labels-preview-container">
+
+        <div 
+        class="label-preview"
+        *ngFor="let label of labels" 
+        [ngStyle]="{ 'background-color': label.color}"
+        >
+        {{ label.label }}
+        <div (click)="removeLabel(label)" class="close-con">
+            <i class="fas fa-times close-icon" [ngStyle]="{ 'color': label.color}" ></i>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="label-buttons">
+
+        <button *ngIf="labels.length !== 0" (click)="clearLabels()" class="basic-button label-button">Clear All</button>
+
+        <button (click)="addLabel()" class="basic-button label-button two">Add</button>
+
+    </div>
+
+</div>

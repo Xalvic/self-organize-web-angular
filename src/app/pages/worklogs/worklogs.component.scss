@@ -1,0 +1,186 @@
+.worklogs-container {
+    //background-color: red;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.6fr repeat(3, 1fr) 0.3fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 1rem;
+    .logs-header {
+        grid-area: 1 / 1 / 2 / 6;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        .header-content {
+            color: #6c7a93;
+            font-size: 3rem;
+        }
+    }
+    .logs-wrapper {
+        grid-area: 2 / 1 / 5 / 6;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        padding-right: 0.8rem;
+        margin: 0rem 1rem;
+        .single-login {
+            position: relative;
+            background: #f6fbff;
+            border-radius: 0.3rem;
+            margin-bottom: 1rem;
+            padding: 1rem 0.6rem;
+            .log-content {
+                font-size: 0.9rem;
+            }
+            .bottom-row {
+                margin-top: 1rem;
+                display: flex;
+                justify-content: space-between;
+                .log-time {
+                    font-size: 0.8rem;
+                }
+                .labels {
+                    display: flex;
+                    align-items: flex-end;
+                    .label {
+                        font-size: 0.6rem;
+                        font-weight: 600;
+                        color: #ffffff;
+                        border-radius: 0.4rem;
+                        margin-left: 0.4rem;
+                        padding: 0.2rem 0.6rem;
+                    }
+                    // .label:nth-child(1) { background-color: #8a4af3; }
+                    // .label:nth-child(2) { background-color: #e91e63; }
+                    // .label:nth-child(3) { background-color: #03a9f4; }
+                    // .label:nth-child(4) { background-color: #ff9800; }
+                }
+            }
+            .floater {
+                position: absolute;
+                top: 0;
+                right: 1rem;
+                transform: translateY(50%);
+                .fas {
+                    cursor: pointer;
+                    color: #60676e;
+                }
+            }
+            .dropdown {
+                background-color: #ffffff;
+                position: absolute;
+                min-width: 8rem;
+                top: 0;
+                right: 2rem;
+                transform: translateY(15%);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                padding: 0rem 0.4rem;
+                font-size: 0.9rem;
+                border-radius: 0.4rem;
+                .item {
+                    border-radius: 0.3rem;
+                    margin: 0.4rem 0;
+                    padding: 0.4rem 0.8rem;
+                    &:hover {
+                        cursor: pointer;
+                        background: #dee9fd;
+                    }
+                    &:last-child {
+                        color: #e04949;
+                        &:hover {
+                            background: #fddede;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .logs-wrapper::-webkit-scrollbar-track {
+        border-radius: 1rem;
+        // box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.219);
+        // -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.219);
+        background-color: transparent;
+    }
+
+    .logs-wrapper::-webkit-scrollbar {
+        width: 8px;
+        background-color: transparent;
+    }
+
+    .logs-wrapper::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #5f84fc;
+    }
+
+    .input-container {
+        grid-area: 5 / 1 / 6 / 6;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f2f8ff;
+        box-shadow:  6px 6px 16px #cdd3d9,
+             -6px -6px 16px #ffffff;
+        border-radius: 3rem;
+        margin: 0 1rem 1rem 1rem;
+        padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+        .input {
+            width: 80%;
+            border: none;
+            resize: none;
+            background: transparent;
+            //padding: 0.4rem 0.6rem;
+            //background-color: red;
+        }
+        .input-buttons {
+            display: flex;
+            position: relative;
+            .input-button {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50px;
+                border: 2px solid #dae4f0;
+                // box-shadow:  6px 6px 13px #c6cdd6,
+                //             -6px -6px 13px #ffffff;
+                font-size: 1rem;
+                width: 3rem;
+                height: 3rem;
+                list-style: none;
+                margin-left: 1rem;
+            }
+            .input-button.play, .input-button.label, .input-button.mic, .input-button.send, .input-button.timer {
+                background: linear-gradient(145deg, #ffffff, #f9ffff);
+                color: #9fafc8;
+            }
+            .input-button.label {
+                position: relative;
+                .badge {
+                    top: 0;
+                    right: 0;
+                    transform: translateY(-20%) translateX(20%);
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    border-radius: 50%;
+                    font-size: 0.7rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    color: #ffffff;
+                    background-color: rgb(255, 80, 57);
+                }
+            }
+            .input-button.pause {
+                color: #ffffff;
+                background: linear-gradient(145deg, #89aeff, #7393e6);
+                border-color:#5f84fc;
+                box-shadow: inset 6px 6px 13px #567ad9,
+                inset -6px -6px 13px #74a4ff;
+            }
+        }
+    }
+}

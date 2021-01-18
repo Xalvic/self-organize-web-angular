@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+app-log-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.basic-input-text {
+    border: hidden;
+    outline: none;
+    padding: 0.2rem 0.4rem;
+}
+.basic-button {
+    cursor: pointer;
+    border-radius: 0.3rem;
+    min-width: 4rem;
+    outline: none;
+    border: none;
+    padding: 0.3rem 0.6rem;
+}

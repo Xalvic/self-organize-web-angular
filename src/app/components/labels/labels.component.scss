@@ -1,0 +1,103 @@
+#input-label-name {
+    height: 2rem;
+    width: 100%;
+}
+.label-input {
+    border: 2px solid #89aeff;
+}
+
+.labels-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-35%) translateY(-103%);
+    .labels-header {
+        color: #41516b;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+    }
+    .colors-panel {
+        margin: 0.6rem 0;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0.7rem;
+        grid-row-gap: 0.5rem;
+        .color-cell {
+            cursor: pointer;
+            margin: 0;
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    .color-input-container {
+        display: flex;
+        width: 100%;
+        .color-preview {
+            background-color: #ffffff;
+            width: 13%;
+            height: 1.8rem;
+        }
+        #input-label-color {
+            width: 87%;
+        }
+    }
+    .labels-preview-container {
+        width: 100%;
+        margin-top: 0.4rem;
+        max-height: 12rem;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        .label-preview {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0.3rem;
+            padding: 0.2rem 0.4rem;
+            color: #ffffff;
+            font-size: 0.6rem;
+            margin: 0.4rem 0.4rem 0 0;
+            .close-con {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 0.4rem;
+                border-radius: 50%;
+                background-color: #ffffff;
+                width: 0.8rem;
+                height: 0.8rem;
+                .close-icon {
+                    font-size: 0.6rem;
+                }
+                &:hover {
+                    cursor: pointer;
+                    background-color: transparent;
+                }
+                &:hover .close-icon  {
+                    color: #ffffff !important;
+                }
+            }
+        }
+    }
+    .label-buttons {
+        margin-top: 0.8rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .label-button {
+            color: #41516b;
+            font-weight: 600;
+            background: #dee9fd;
+            border: 2px solid #89aeff;
+        }
+    }
+}

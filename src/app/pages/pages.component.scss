@@ -1,0 +1,9 @@
+.pages-container {
+    min-height: 100vh;
+    background: #dee9fd;
+    display: flex;
+    .pages-router-conatiner {
+        width: calc(100% - 6rem);
+        margin-left: auto;
+    }
+}
