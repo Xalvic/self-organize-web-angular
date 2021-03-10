@@ -12,6 +12,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
+import { LogLoaderComponent } from './components/log-loader/log-loader.component';
 
 //!Services 
 import { ListService } from './services/list.service';
@@ -21,6 +22,7 @@ import { ListService } from './services/list.service';
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    LogLoaderComponent,
   ],
   imports: [
     BrowserModule,

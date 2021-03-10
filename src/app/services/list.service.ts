@@ -9,14 +9,20 @@ export class ListService {
 
   constructor( private http: HttpClient ) { }
 
-  // getToken() {
-  //   return localStorage.getItem('token');
-  // }
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWZiMjhkOGU3NTI3ZDUxZTk4NDQ2OWM3In0sImlhdCI6MTYxMDg3MTAwNiwiZXhwIjoxNjEwOTcxMDA2fQ.dz4JUs_BqpEMWQuzHtFU4lr7WG5KMTOtGtstF8QHRWo'
+  getToken() {
+    return localStorage.getItem('token');
+  }
 
-  getLogs() {
-    let headers = this.heads.set('token', this.token);
-    return this.http.get<any>(`http://localhost:5000/api/personal`, { headers });
+  getLogs(num, fw, lw, fm, lm) {
+    let headers = this.heads.set('token', this.getToken());
+
+    if(num === 0) {
+      return this.http.get<any>(`https://self-organize-node.herokuapp.com/api/personal`, { headers });
+    } else if(num === 1) {
+      return this.http.get<any>(`https://self-organize-node.herokuapp.com/api/personal?gte=${fw}&lte=${lw}`, { headers });
+    } else if(num === 2) {
+      return this.http.get<any>(`https://self-organize-node.herokuapp.com/api/personal?gte=${fm}&lte=${lm}`, { headers });
+    }
   }
 
 

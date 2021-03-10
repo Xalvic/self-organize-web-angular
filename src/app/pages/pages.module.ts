@@ -10,12 +10,12 @@ import { PagesComponent } from './pages.component';
 import { WorklogsComponent } from './worklogs/worklogs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
-import { LogLoaderComponent } from '../components/log-loader/log-loader.component';
 
 import { DropdownclickDirective } from '../directives/dropdownclick.directive';
 import { LabelsComponent } from '../components/labels/labels.component';
 import { AudiorecordComponent } from '../components/audiorecord/audiorecord.component';
-
+import { LogtimerComponent } from '../components/logtimer/logtimer.component';
+import { ConfigComponent } from './config/config.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +23,11 @@ import { AudiorecordComponent } from '../components/audiorecord/audiorecord.comp
     WorklogsComponent, 
     DashboardComponent,
     NavbarComponent,
-    LogLoaderComponent,
     DropdownclickDirective,
     LabelsComponent,
     AudiorecordComponent,
+    LogtimerComponent,
+    ConfigComponent,
   ],
   imports: [
     CommonModule,

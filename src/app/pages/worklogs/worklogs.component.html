@@ -2,8 +2,17 @@
     
     <div class="logs-header">
         <h1 class="header-content">
-            Work Logs
+            Personal Logs
         </h1>
+
+        <div class="button-group">
+
+            <button class="basic-button single-day" *ngFor="let day of this.weekDays" [class.active-day]="day.toggle">
+                <div class="day">{{ day.day }}</div>
+                <div class="date">{{ day.dayNum }}</div>
+            </button>
+
+        </div>
     </div>
 
     <div class="logs-wrapper" id="logs">
@@ -12,16 +21,17 @@
         
         <div class="single-login" *ngFor="let log of data">
 
-            <p class="log-content">
-                {{ log.log }}
-            </p>
-            <div class="bottom-row">
-                <p class="log-time">{{ log.createdAt | date:'hh:mm:a' }}</p>
+            <div class="top-row">
+                <p class="log-time">{{ log.createdAt | date:'hh:mm a' }}</p>
 
                 <div class="labels">
                     <div class="label" *ngFor="let label of log.labels" [ngStyle]="{ 'background-color': label.color}">{{ label.label }}</div>
                 </div>
             </div>
+
+            <p class="log-content">
+                {{ log.log }}
+            </p>
 
             <div class="ghost-outer-div" (clickElsewhere)="closeDropdown(log._id)">
 
@@ -40,49 +50,80 @@
 
     </div>
 
-    <div class="input-container">
+    <div class="input-container" *ngIf="screenWidth > 600">
 
-        <!-- <div class="input" contenteditable="true" data-text="What are you doing now ?"></div> -->
-        <input type="text" [formControl]="textInput" (keyup)="submitLogKey($event)" name="textInput" placeholder="What are you doing now ?" class="input" />
-        <!-- <textarea autosize [formControl]="textInput" (keyup)="submitText($event)" [minRows]="1" [maxRows]="5" placeholder="What are you doing now ?" class="input" ></textarea> -->
+        <input type="text" [formControl]="textInput" (keyup)="submitLogKey($event)" name="textInput" placeholder="What are you doing now ?" autocomplete="off" class="input" autofocus />
 
         <div class="input-buttons">
 
             <button (click)="openLabels()" title="Add labels" class="input-button label">
 
-                <i class="fas fa-tags"></i>
+                <i class="fas fa-tags input-icons"></i>
                 <div *ngIf="labelCount" class="badge">{{ labelCount }}</div>
-    
-            </button>
-
-            <button title="Add time manually" class="input-button timer">
-
-                <i class="far fa-clock"></i>
     
             </button>
 
             <button title="Start timer" class="input-button" (click)="timeStart()" [ngClass]="playButton ? 'pause' : 'play' ">
 
-                <i class="fas" [ngClass]="playButton ? 'fa-pause' : 'fa-play'"></i>
+                <i class="fas input-icons" [ngClass]="playButton ? 'fa-stop' : 'fa-play'"></i>
     
             </button>
 
             <button *ngIf="!textInput.value" title="Add audio note" class="input-button mic">
 
-                <i class="fas fa-microphone"></i>
+                <i class="fas fa-microphone input-icons"></i>
     
             </button>
             
             <button *ngIf="textInput.value" (click)="submitLog()" title="Submit" class="input-button send">
 
-                <i class="fas fa-paper-plane"></i>
+                <i class="fas fa-paper-plane input-icons"></i>
     
             </button>
 
-            <app-labels (onLabelAdd)="recieve($event)" [toLabels]="labels" *ngIf="labelBoolean" @fadeSlideInOut></app-labels>
+            <app-labels class="the-labels" [ngClass]="playButton ? 'the-labels-left' : 'the-labels' " (onLabelAdd)="recieve($event)" [toLabels]="labels" *ngIf="labelBoolean" @fadeSlideInOut></app-labels>
+
+            <app-logtimer *ngIf="playButton" @fadeSlideInOut></app-logtimer>
 
         </div>
 
+    </div>
+
+    <div class="mob-input-container" *ngIf="screenWidth <= 600">
+        <!-- <div *ngIf="mobInputBoolean" @stagger>
+
+            <div class="mob-inputs" *ngFor="let button of mobButtons">
+                <i class={{button.class}}></i>
+            </div>
+
+        </div>
+        <div (click)="openMobInput()" *ngIf="!mobInputBoolean" class="mob-inputs input-opener">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div (click)="openMobInput()" *ngIf="mobInputBoolean" class="mob-inputs input-opener">
+            <i class="fas fa-times"></i>
+        </div> -->
+        <div (click)="openMobInput()" *ngIf="!mobInputBoolean" class="mob-inputs input-opener">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="mob-input-overlay" *ngIf="mobInputBoolean">
+        <div class="mob-input">
+            <i (click)="openMobInput()" class="fas fa-times mob-input-box-closer"></i>
+            <h3 class="mob-input-head">Add your log</h3>
+            <input type="text" [formControl]="textInput" name="textInput" placeholder="Enter here" autocomplete="off" autofocus class="main-input" />
+            
+            <button (click)="mobopenLabels()" title="Add labels" class="mob-input-button label">
+
+                <i class="fas fa-tags input-icons"></i>
+                <div *ngIf="labelCount" class="badge">{{ labelCount }}</div>
+    
+            </button>
+
+            <div class="mob-input-done" (click)="submitLog()">Done</div>
+        </div>
+        <!-- [ngClass]="playButton ? 'the-labels-left' : 'the-labels' "  class="the-labels"-->
+        <app-labels class="the-labels-mob" (onLabelAdd)="recieve($event)" [toLabels]="labels" *ngIf="moblabelBoolean" @fadeSlideInOut></app-labels>
     </div>
 
 </div>

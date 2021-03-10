@@ -1,46 +1,64 @@
 $primary-color: RGB(227, 59, 21);
+@import '../../constants/colors.scss';
 //#95EAAE
 .navigation-container {
-    background: #dee9fd;
+    background: transparent;
     height: 100vh;
     width: 6rem;
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 600px) {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+    }
     .navigator-list {
         .navigator {
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50px;
-            border: 2px solid #dae4f0;
-            background: linear-gradient(145deg, #f9ffff, #d2d9e3);
-            box-shadow:  6px 6px 13px #c6cdd6,
-                        -6px -6px 13px #ffffff;
-            // box-shadow:  6px 6px 13px #567ad9,
-            //             -6px -6px 13px #74a4ff;
-            width: 4rem;
-            height: 4rem;
-            margin: 2.5rem 0;
+            color: $primary-black;
+            opacity: 0.8;
             list-style: none;
-            color: #9fafc8;
             padding: 1rem;
+            transition: all 400ms ease-in-out;
             &:hover {
-                opacity: 0.8;
                 cursor: pointer;
+            }
+            @media (max-width: 600px) {
+                margin: 0.7rem 2rem;
+                width: 3rem;
+                height: 3rem;
+                background: none;
+                box-shadow: none;
+                border: none;
+            }
+            @media (max-width: 464px) {
+                margin: 0.7rem 0rem;
             }
         }
         .navigator-active {
-            color: #ffffff;
-            background: linear-gradient(145deg, #89aeff, #7393e6);
-            //background: linear-gradient(145deg, #4d6ec3, #7fa3ff);
-            border-color:#5f84fc;
-            box-shadow: inset 6px 6px 13px #567ad9,
-            inset -6px -6px 13px #74a4ff;
+            opacity: 1;
+            transform: scale(1.6);
+            margin: 1rem 0;
+        }
+        @media (max-width: 600px) {
+            display: flex;
+        }
+        @media (max-width: 464px) {
+            margin: 0 1rem;
+            width: 100%;
+            justify-content: space-between;
         }
     }
     .nav-icons {
         font-size: 1.5rem;
-      }
+        @media (max-width: 464px) {
+            font-size: 1rem;
+        }
+    }
 }
+
