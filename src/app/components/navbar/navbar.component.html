@@ -3,17 +3,22 @@
     <ul class="navigator-list">
 
         <li [routerLink]="['/pages/dashboard']" routerLinkActive="navigator-active" class="navigator">
-            <i class="fas fa-home nav-icons"></i>
+            <!-- <i class="fas fa-home nav-icons"></i> -->
+            <img src="../../../assets/icons/home.png" class="nav-icons" alt="">
         </li>
 
         <li [routerLink]="['/pages/worklogs']" routerLinkActive="navigator-active" class="navigator">
-            <i class="fas fa-briefcase nav-icons"></i>
+            <img src="../../../assets/icons/logs.png" class="nav-icons" alt="">
         </li>
 
-        <li [routerLink]="['/pages/config']" routerLinkActive="navigator-active" class="navigator">
+        <!-- <li [routerLink]="['/pages/config']" routerLinkActive="navigator-active" class="navigator">
             <i class="fas fa-user nav-icons"></i>
-        </li>
+        </li> -->
 
     </ul>
+
+    <div class="end-menu">
+        <img src="../../../assets/icons/settings.png" [routerLink]="['/pages/config']" routerLinkActive="navigator-active" class="nav-icons" alt="">
+    </div>
 
 </nav>

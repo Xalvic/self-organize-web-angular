@@ -1,13 +1,17 @@
-$primary-color: RGB(227, 59, 21);
 @import '../../constants/colors.scss';
 //#95EAAE
+.navigator-list, .end-menu  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .navigation-container {
-    background: transparent;
     height: 100vh;
     width: 6rem;
     position: fixed;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     @media (max-width: 600px) {
         width: 100%;
@@ -15,6 +19,7 @@ $primary-color: RGB(227, 59, 21);
         bottom: 0;
     }
     .navigator-list {
+        height: 90%;
         .navigator {
             display: flex;
             justify-content: center;
@@ -55,9 +60,17 @@ $primary-color: RGB(227, 59, 21);
         }
     }
     .nav-icons {
-        font-size: 1.5rem;
-        @media (max-width: 464px) {
-            font-size: 1rem;
+        width: 2rem;
+        // font-size: 1.5rem;
+        // @media (max-width: 464px) {
+        //     font-size: 1rem;
+        // }
+    }
+
+    .end-menu {
+        height: 10%;
+        .nav-icons:hover {
+            cursor: pointer;
         }
     }
 }

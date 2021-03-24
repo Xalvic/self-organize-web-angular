@@ -14,14 +14,17 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        data: { animationState: 'One' }
       },
       {
         path: 'worklogs',
         component: WorklogsComponent,
+        data: { animationState: 'Two' }
       },
       {
         path: 'config',
         component: ConfigComponent,
+        data: { animationState: 'Three' }
       },
       {
         path: '',

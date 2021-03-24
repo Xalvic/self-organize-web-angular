@@ -1,8 +1,9 @@
+@import '../constants/colors.scss';
 .pages-container {
     min-height: 100vh;
     overflow: hidden;
     display: flex;
-    background-color: #ffffff;
+    background-color: $base-bg;
     .pages-router-conatiner {
         width: calc(100% - 6rem);
         margin-left: auto;

@@ -7,31 +7,52 @@
 
         <div class="button-group">
 
-            <button class="basic-button single-day" *ngFor="let day of this.weekDays" [class.active-day]="day.toggle">
+            <button class="basic-button single-day" *ngFor="let day of this.weekDays" [class.active-day]="day.toggle" [class.disabled-day]="!day.is_active" (click)="selectDay(day)">
                 <div class="day">{{ day.day }}</div>
                 <div class="date">{{ day.dayNum }}</div>
             </button>
 
         </div>
+
+        <div class="dropdown">
+
+            <button></button>
+            
+            <div class="options">
+
+                <input id="radio-week" type="radio" name="days-type" value="week" checked>
+                <label style="--index: 1" for="radio-week">This Week</label>
+            
+                <input id="radio-month" type="radio" name="days-type" value="month">
+                <label style="--index: 2" for="radio-month">This Month</label>
+            
+            </div>
+            
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+            </svg>
+            
+        </div>
+
     </div>
 
-    <div class="logs-wrapper" id="logs">
+    <div class="logs-wrapper" @stagger *ngIf='showLogs' id="logs">
 
         <app-log-loader *ngIf="loader === true"></app-log-loader>
         
         <div class="single-login" *ngFor="let log of data">
 
-            <div class="top-row">
+            <p class="log-content">
+                {{ log.log | truncate:[152, '...'] }}
+            </p>
+
+            <div class="bottom-row">
                 <p class="log-time">{{ log.createdAt | date:'hh:mm a' }}</p>
 
                 <div class="labels">
-                    <div class="label" *ngFor="let label of log.labels" [ngStyle]="{ 'background-color': label.color}">{{ label.label }}</div>
+                    <div class="label" *ngFor="let label of log.labels" [ngStyle]="{ 'background-color': label.color}"></div>
                 </div>
             </div>
-
-            <p class="log-content">
-                {{ log.log }}
-            </p>
 
             <div class="ghost-outer-div" (clickElsewhere)="closeDropdown(log._id)">
 
@@ -47,6 +68,14 @@
             </div>
 
         </div>
+
+    </div>
+
+    <div class="no-logs-wrapper" *ngIf='!showLogs'>
+
+        <img src="../../../assets/images/no-logs.svg" alt="no-results">
+
+        <h3>No logs to show</h3>
 
     </div>
 

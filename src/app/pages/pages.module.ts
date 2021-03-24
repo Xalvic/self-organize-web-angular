@@ -17,13 +17,17 @@ import { AudiorecordComponent } from '../components/audiorecord/audiorecord.comp
 import { LogtimerComponent } from '../components/logtimer/logtimer.component';
 import { ConfigComponent } from './config/config.component';
 
+//! Pipes
+import { TruncatePipe } from '../pipes/truncate.pipe';
+
 @NgModule({
   declarations: [
+    DropdownclickDirective,
+    TruncatePipe,
     PagesComponent, 
     WorklogsComponent, 
     DashboardComponent,
     NavbarComponent,
-    DropdownclickDirective,
     LabelsComponent,
     AudiorecordComponent,
     LogtimerComponent,

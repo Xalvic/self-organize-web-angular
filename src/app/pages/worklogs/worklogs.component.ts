@@ -21,18 +21,18 @@ import { trigger, style, animate, transition, query, stagger } from '@angular/an
     trigger('stagger', [
       transition('void => *', [ 
         query(':enter', [
-            style({ opacity: 0, 'transform': 'translateY(100%) scale(0.1)' }),
-            stagger('-280ms', [
-              animate('300ms', style({ opacity: 1, 'transform': 'translateY(-10%) scale(1)' })),
-              animate('300ms', style({ opacity: 1, 'transform': 'translateY(0%) scale(1)' }))
+            style({ opacity: 0, 'transform': 'translateY(-100%)' }),
+            stagger('100ms', [
+              animate('150ms', style({ opacity: 1, 'transform': 'translateY(-4%)' })),
+              animate('150ms', style({ opacity: 1, 'transform': 'translateY(0%)' }))
             ])
           ], { optional: true }
         )
       ]),
       transition('* => void', [ 
         query(':leave', [
-            style({ opacity: 1, 'transform': 'translateY(0%) scale(1)' }),
-            stagger('280ms', [animate('300ms', style({ opacity: 0, 'transform': 'translateY(100%) scale(0.1)' }))])
+            style({ opacity: 1, 'transform': 'translateY(0%)' }),
+            stagger('100ms', [animate('300ms', style({ opacity: 0, 'transform': 'translateY(100%)' }))])
           ], { optional: true }
         )
       ])
@@ -60,6 +60,7 @@ export class WorklogsComponent implements OnInit {
   monthFirst;
   monthLast;
   temp: boolean = false;
+  showLogs: boolean = false;
 
   data = [];
 
@@ -121,9 +122,15 @@ export class WorklogsComponent implements OnInit {
   }
 
   callLogs(num) {
+      //this.showLogs = false;
       this._list.getLogs(num, this.weekFirst, this.weekLast, this.monthFirst, this.monthLast).subscribe(
         (res) => {
           this.data = res;
+          if(res.length != 0) {
+            this.showLogs = true;
+          } else {
+            this.showLogs = false;
+          }
           this.data.forEach(element => {
             element.menuBool = false;
           });
@@ -151,6 +158,39 @@ export class WorklogsComponent implements OnInit {
     // console.log(this.weekFirst, this.weekLast);
     // console.log(this.monthFirst, this.monthLast);
   }
+
+  selectDay(day) {
+    if(day.is_active) {
+      this.weekDays.forEach((elm) => {
+        if(day.date == elm.date) {
+          elm.toggle = true;
+          this.showLogs = false;
+          this._list.getLogs(1, day.date, day.date, this.monthFirst, this.monthLast).subscribe(
+            (res) => {
+              this.data = res;
+              if(res.length != 0) {
+                this.showLogs = true;
+              } else {
+                this.showLogs = false;
+              }
+              this.data.forEach(element => {
+                element.menuBool = false;
+              });
+              this.loader = false;
+              console.log(this.data);
+            },
+            (err) => {
+              this.loader = false;
+              console.log(err);
+            }
+          )
+        } else {
+          elm.toggle = false;
+        }
+      })
+    }
+  }
+
   getWeekDays(current) {
     let week= new Array(); 
 
@@ -161,6 +201,7 @@ export class WorklogsComponent implements OnInit {
             day: new Date(current).toString().split(' ')[0],
             dayNum: new Date(current).toString().split(' ')[2],
             toggle: false,
+            is_active: false,
           }
           if(this.today == current.toString().split(' ')[2]) {
             data.toggle = true;
@@ -168,6 +209,11 @@ export class WorklogsComponent implements OnInit {
           week.push(data); 
           current.setDate(current.getDate() +1);
     }
+
+    week.slice(0, (week.findIndex(elm => elm.dayNum == new Date().toString().split(' ')[2])+1)).forEach(v => {
+      v.is_active = true;
+    });
+
     this.weekDays = week;
     console.log(this.weekDays);
     return week;
@@ -203,7 +249,6 @@ export class WorklogsComponent implements OnInit {
   }
 
   closeDropdown(id) {
-    // console.log("hello");
     this.data.map((log: any) => {
       if (log._id === id) { log.menuBool = false; }
       return log;

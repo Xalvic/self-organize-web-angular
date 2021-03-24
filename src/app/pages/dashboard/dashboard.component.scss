@@ -1,235 +1,104 @@
-.dashboard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
-    flex-direction: column;
-    .logo-contain-div {
-        z-index: 20;
-        position: relative;
-        padding: 2.5rem;
-        border-radius: 50px;
-        background-color: #e3e3e3;
-        box-shadow:  24px 24px 48px #c1c1c1,
-                    -24px -24px 48px #ffffff;
-        //!animation: zoom 4.5s ease-in forwards;
-        .expander1 {
-            background-color: transparent;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: translateY(6%) translateX(4%);
-            box-shadow:  24px 24px 48px #c1c1c1,
-                    -24px -24px 48px #ffffff;
-            width: 220px;
-            height: 220px;
-            border-radius: 10%;
-            z-index: -10;
-            opacity: 0;
-            //!animation: waveAnim1 2.5s ease-out;
-            animation-delay: 2.5s;
-          }
-    }
 
-    .company-name {
-        //background-color: red;
-        position: absolute;
-        // transform: translateX(65%);
-        // clip-path: polygon(7% 0, 38% 0, 38% 100%, 7% 100%);
-        //!animation: reveal1 3s ease-in-out backwards;
-        animation-delay: 2.5s;
-        z-index: 40;
-        margin-top: 6rem;
-        font-weight: 700;
-        font-size: 3.8rem;
-        letter-spacing: 2px;
-        //color: #a5a5a5;
-        color: #afafaf;
-        //text-shadow: 0px 0px 2px #ffffff, 0px 0px 2px #ffffff;
-    }
+//! LOGO REVEAL ==>>
+// .dashboard-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     min-height: 100vh;
+//     overflow: hidden;
+//     flex-direction: column;
 
-#logo {
-    width: 10rem;
-    height: 10rem;
-    path {
-        stroke-dasharray: 900;
-        stroke-dashoffset: 0;
-        animation: dash 3s ease-in-out backwards;
-    }
-}
+// #logo {
+//     width: 10rem;
+//     height: 10rem;
+//     path {
+//         stroke-dasharray: 900;
+//         stroke-dashoffset: 0;
+//         animation: dash 3s ease-in-out backwards;
+//     }
+// }
 
-.seconder {
-    margin-top: 3rem;
-    display: flex;
-    align-items: center;
-    .circle {
-        width: 1rem;
-        height: 1rem;
-        background-color: red;
-        border-radius: 50%;
-        margin: 1.5rem 0 0 0.3rem;
-        animation: redzoom 400ms ease-in-out backwards;
-        animation-delay: 1.8s;
-    }
-}
+// .seconder {
+//     margin-top: 3rem;
+//     display: flex;
+//     align-items: center;
+//     .circle {
+//         width: 1rem;
+//         height: 1rem;
+//         background-color: red;
+//         border-radius: 50%;
+//         margin: 1.5rem 0 0 0.3rem;
+//         animation: redzoom 400ms ease-in-out backwards;
+//         animation-delay: 1.8s;
+//     }
+// }
 
-@keyframes redzoom {
-    0% {
-        transform: translateY(0) scale(0);
-    }
-    65% {
-        transform: translateY(0) scale(1.2);
-    }
-    100% {
-        transform: translateY(0) scale(1);
-    }
-}
-@keyframes dash {
-    from {
-        stroke-dashoffset: 900;
-    }
-    to {
-      stroke-dashoffset: 0;
-    }
-}
+// @keyframes redzoom {
+//     0% {
+//         transform: translateY(0) scale(0);
+//     }
+//     65% {
+//         transform: translateY(0) scale(1.2);
+//     }
+//     100% {
+//         transform: translateY(0) scale(1);
+//     }
+// }
+// @keyframes dash {
+//     from {
+//         stroke-dashoffset: 900;
+//     }
+//     to {
+//       stroke-dashoffset: 0;
+//     }
+// }
 
-@media only screen and (max-width: 1300px) {
-    .company-name {
-        animation: reveal2 3s ease-in-out backwards !important;
-    }
-    .logo-contain-div {
-        //transform: translateY(-60%) !important;
-        animation: zoom2 4.5s ease-in forwards !important;
-    }
-  }
+// @media only screen and (max-width: 1300px) {
+//     .company-name {
+//         animation: reveal2 3s ease-in-out backwards !important;
+//     }
+//     .logo-contain-div {
+//         //transform: translateY(-60%) !important;
+//         animation: zoom2 4.5s ease-in forwards !important;
+//     }
+//   }
   
-}
-@media only screen and (max-width: 706px) {
-    .company-name {
-        font-size: 2.4rem !important;
-    }
-  }
+// }
+// @media only screen and (max-width: 706px) {
+//     .company-name {
+//         font-size: 2.4rem !important;
+//     }
+// }
 
-  @media only screen and (max-width: 565px) {
-    .expander1 {
-        transform: translateY(0%) translateX(-20%) !important;
-      }
-    .company-name {
-        font-size: 2rem !important;
-    }
-    #logo {
-        width: 6rem !important;
-        height: 6rem !important;
-    }
-  }
+// @media only screen and (max-width: 565px) {
+//     .expander1 {
+//         transform: translateY(0%) translateX(-20%) !important;
+//       }
+//     .company-name {
+//         font-size: 2rem !important;
+//     }
+//     #logo {
+//         width: 6rem !important;
+//         height: 6rem !important;
+//     }
+// }
 
-  @media only screen and (max-width: 375px) {
-    .company-name {
-        font-size: 1.7rem !important;
-    }
-    #logo {
-        width: 6rem !important;
-        height: 6rem !important;
-    }
-  }
+// @media only screen and (max-width: 375px) {
+//     .company-name {
+//         font-size: 1.7rem !important;
+//     }
+//     #logo {
+//         width: 6rem !important;
+//         height: 6rem !important;
+//     }
+// }
 
-  @media only screen and (max-width: 350px) {
-    .company-name {
-        font-size: 1.5rem !important;
-    }
-    #logo {
-        width: 5rem !important;
-        height: 5rem !important;
-    }
-  }
-
-@keyframes waveAnim1 {
-    0% {
-        transform: translateY(6%) translateX(4%) scale(1);
-        opacity: 1;
-        border-radius: 10%;
-    }
-    50% {
-        transform: translateY(6%) translateX(4%) scale(5);
-        border-radius: 40%;
-    }
-    100% {
-        transform: translateY(6%) translateX(4%) scale(8);
-        border-radius: 50%;
-        opacity: 0;
-    }
-  }
-      
-  @keyframes reveal1 {
-    0% {
-        transform: translateX(65%);
-        clip-path: polygon(7% 0, 7% 0, 7% 100%, 7% 100%);
-    }
-    50% {
-        transform: translateX(65%);
-        clip-path: polygon(7% 0, 19% 0, 19% 100%, 7% 100%);
-    }
-    95% {
-        transform: translateX(65%);
-        clip-path: polygon(7% 0, 38% 0, 38% 100%, 7% 100%);
-    }
-    100% {
-        transform: translateX(0%);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-  }
-
-  @keyframes reveal2 {
-    0% {
-        clip-path: polygon(0% 0, 0% 0, 0% 100%, 0% 100%);
-    }
-    50% {
-        clip-path: polygon(0% 0, 19% 0, 19% 100%, 0% 100%);
-    }
-    95% {
-        clip-path: polygon(0% 0, 38% 0, 38% 100%, 0% 100%);
-    }
-    100% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-  }
-
-
-@keyframes zoom {
-    0% {
-        transform: translateY(0) scale(0.3);
-    }
-    20% {
-        transform: translateY(0) scale(0.4);
-    }
-    40% {
-        transform: translateY(0) scale(0.5);
-    }
-    70% {
-        transform: translateY(0) scale(1);
-    }
-    75% {
-        transform: translateY(0) scale(1);
-    }
-    80% {
-        transform: translateY(0) scale(1);
-    }
-    90% {
-        transform: translateY(0) scale(1);
-    }
-    95% {
-        transform: translateY(0) scale(1);
-    }
-    100% {
-        transform: translateY(-60%) scale(1);
-    }
-}
-@keyframes zoom2 {
-    from {
-        transform: translateY(-60%) scale(0.3);
-    }
-    to {
-        transform: translateY(-60%) scale(1);
-    }
-}
+// @media only screen and (max-width: 350px) {
+//     .company-name {
+//         font-size: 1.5rem !important;
+//     }
+//     #logo {
+//         width: 5rem !important;
+//         height: 5rem !important;
+//     }
+// }

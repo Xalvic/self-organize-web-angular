@@ -14,6 +14,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogLoaderComponent } from './components/log-loader/log-loader.component';
 
+// //! Pipes
+// import { TruncatePipe } from './pipes/truncate.pipe';
+
 //!Services 
 import { ListService } from './services/list.service';
 
@@ -23,6 +26,7 @@ import { ListService } from './services/list.service';
     RegisterComponent,
     LoginComponent,
     LogLoaderComponent,
+    //TruncatePipe,
   ],
   imports: [
     BrowserModule,
